@@ -2,3 +2,93 @@
 Theme Name: Photo Event
 Author: Ben Mrad Intidhar
 */
+/* @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Space+Mono&display=swap'); */
+
+
+
+@font-face {
+	font-family: 'Poppins';
+	src: url('assets/fonts/poppins-light-webfont.eot');
+	src: url('assets/fonts/poppins-light-webfont.eot?#iefix') format('embedded-opentype'),
+	url('assets/fonts/poppins-light-webfont.woff2') format('woff2'),
+	url('assets/fonts/poppins-light-webfont.woff') format('woff'),
+	url('assets/fonts/poppins-light-webfont.ttf') format('truetype'),
+	url('assets/fonts/poppins-light-webfont.svg#svgwpf') format('svg');
+	}
+	@font-face {
+		font-family: 'SpaceMono';
+		src: url('assets/fonts/spacemono-regular-webfont.eot');
+		src: url('assets/fonts/spacemono-regular-webfont.eot?#iefix') format('embedded-opentype'),
+		url('assets/fonts/spacemono-regular-webfont.woff2') format('woff2'),
+		url('assets/fonts/spacemono-regular-webfont.woff') format('woff'),
+		url('assets/fonts/spacemono-regular-webfont.ttf') format('truetype'),
+		url('assets/fonts/spacemono-regular-webfont.svg#svgwpf') format('svg');
+		}
+/****CSS GENERAL*****/
+html{
+	max-width: 1440px;
+	margin: auto;
+
+}
+
+a , .menu p {
+	font-family: "SpaceMono";
+	font-size: 16px;
+	font-weight: 400;
+	color: black;
+	text-decoration: none;
+	list-style-type: none;
+	padding:0px 50px 0px 0px;
+}
+
+/****CSS HEADER*****/
+header {
+	margin: 30px 0px 28px 0px;
+	display: flex;
+	justify-content: space-between;
+
+}
+
+/* logo du header */
+#logo img {
+
+	display: block;
+	width: 216px;
+	height: 14px;
+}
+
+/* le menu (la nav)  */
+.menu {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	
+}
+
+.header-menu {
+	display: flex;
+	font-size: 16px;
+	list-style: none;
+
+}
+
+
+/*********CSS FOOTER*******/
+footer {
+	border-top: 1px solid #000;
+	margin: 30px 0px 28px 0px;
+	display: flex;
+	justify-content: center;
+	
+
+}
+
+.footer-menu {
+	display: flex;
+	
+	list-style: none;
+}
+
+
+    

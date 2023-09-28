@@ -1,0 +1,99 @@
+/******* CSS PAGE D'ACCUEIL ******/
+/*hero header*/
+#heroheader {
+	width: 100vw;
+	height: auto;
+	margin-bottom: 6vh;
+}
+
+#heroheader img {
+	width: 100vw;
+	height: 50vw;
+	object-fit: cover;
+}
+
+#heroheader h1 {
+	font-family: 'SpaceMono';
+	font-style: italic;
+	font-weight: 700;
+	font-size: 6vw;
+	position: absolute;
+	top: 34vh;
+	left: 16vw;
+	color: transparent;
+	-webkit-text-stroke: 1px white;
+	margin: auto;
+}
+
+.photos-acc figure {
+	width: 42vw;
+	height: 70vh;
+	object-fit: cover;
+}
+
+.photos-acc {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-around;
+	width: 95vw;
+}
+
+.photos-acc figure img {
+	width: 42vw;
+	height: 70vh;
+	object-fit: cover;
+}
+
+/*les filtres */
+.filtres {
+	margin-bottom: 5vh;
+	margin-left: 4vw;
+	display: flex;
+	padding: 10px;
+
+}
+
+
+
+.filtres select {
+	width: 18vw;
+	height: 5vh;
+	border-radius: 8px;
+	border: solid #B8BBC2 1px;
+	font-family: 'Popins';
+	font-weight: 500;
+	font-size: 12px;
+	line-height: 18px;
+	padding:0vw 2vw;
+}
+
+.filtres div {
+	display: flex;
+	flex-direction: column;
+
+}
+
+#formFiltre {
+	margin-left: 5.5vw;
+
+}
+
+#triFiltre {
+	margin-left: 30vw;
+}
+
+/*bouton pagination*/
+#load-more {
+	text-align: center;
+	background: #D8D8D8;
+	border: 0px;
+	padding: 1vh;
+	font-family: "SpaceMono", "sans serif";
+	margin: auto;
+	width: 18vw;
+	height: 5vh;
+	display: flex;
+	justify-content: center;
+
+	align-items: center;
+}

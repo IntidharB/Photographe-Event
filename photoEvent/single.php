@@ -1,50 +1,79 @@
 <?php
+
 /**
- * The template for displaying all single posts
- *
- * @link https://developer.wordpress.org/themes/basics/template-hierarchy/#single-post
+ * Template pour afficher les articles individuels du type de contenu personnalisé "photo_gallery".
  *
  * @package WordPress
- * @subpackage Twenty_Twenty_One
- * @since Twenty Twenty-One 1.0
+ * @subpackage photoEvent
+ * @since 1.0
  */
+?>
 
-get_header();
+<?php get_header(); ?>
+<main class="main_single">
+	<?php if (have_posts()) : ?>
+		<?php while (have_posts()) : the_post(); ?>
+			<div class="photo">
+				<div class="info-photo">
+					
+					<h1 class="photo-title"><?php the_title(); ?></h1>
+					<p>Référence : <span id="ref-photo"> <?php echo get_field('reference'); ?></span></p>
+					<p>Categorie : <?php echo strip_tags(get_the_term_list($post->ID, 'categorie')); ?></p>
+					<p>Format : <?php echo strip_tags(get_the_term_list($post->ID, 'format')); ?></p>
+					<p>Type : <?php echo get_field('type'); ?></p>
+					<p>Année :<?php the_date(' Y'); ?></p>
+					
+				</div>
+				<div class="photo-content">
+					<?php the_content(); ?>
+				</div>
+			</div>
+			<div class="partie_2">
 
-/* Start the Loop */
-while ( have_posts() ) :
-	the_post();
+				<p>Cette photo vous intéresse ?
+				<input type="button" value="Contact" id="modaleContactSingle">
+				
+				</p>
 
-	get_template_part( 'template-parts/content/content-single' );
+				<div class="card">
+					<div class="carr">
+						<?php the_post_thumbnail(); ?>
+						<div class="carrousel">
+							<?php
+							// Obtenir le post précédent
+							$prevPost = get_previous_post();
+							$prevLink = get_permalink($prevPost);
+							?>
+							<!-- Afficher une flèche vers la gauche avec un lien vers le post précédent -->
+							<a href="<?php echo $prevLink; ?>">
+								<img class="arrow_left" src="<?php echo get_template_directory_uri(); ?>/assets/images/Line6.png" alt="fleche_gauche">
+							</a>
 
-	if ( is_attachment() ) {
-		// Parent post navigation.
-		the_post_navigation(
-			array(
-				/* translators: %s: Parent post link. */
-				'prev_text' => sprintf( __( '<span class="meta-nav">Published in</span><span class="post-title">%s</span>', 'twentytwentyone' ), '%title' ),
-			)
-		);
-	}
+							<?php
+							// Obtenir le post suivant
+							$nextPost = get_next_post();
+							$nextLink = get_permalink($nextPost);
+							?>
+							<!-- Afficher une flèche vers la droite avec un lien vers le post suivant -->
+							<a href="<?php echo $nextLink; ?>">
+								<img class="arrow_right" src="<?php echo get_template_directory_uri(); ?>/assets/images/Line7.png" alt="fleche_droite">
+							</a>
+						</div>
+					</div>
 
-	// If comments are open or there is at least one comment, load up the comment template.
-	if ( comments_open() || get_comments_number() ) {
-		comments_template();
-	}
+				</div>
+			</div>
+		<?php endwhile; ?>
+	<?php endif; ?>
+	<div class="partie_3">
+  		<p>VOUS AIMEREZ AUSSI</p>
+				<div  id="photosapp">
+				<?php get_template_part( 'template-parts/photo-block', get_post_format() ); ?>
+				</div>
+				<a href="<?php echo home_url()?>"><button id="lienAcc">Toutes les photos </button></a>
+	</div>
 
-	// Previous/next post navigation.
-	$twentytwentyone_next = is_rtl() ? twenty_twenty_one_get_icon_svg( 'ui', 'arrow_left' ) : twenty_twenty_one_get_icon_svg( 'ui', 'arrow_right' );
-	$twentytwentyone_prev = is_rtl() ? twenty_twenty_one_get_icon_svg( 'ui', 'arrow_right' ) : twenty_twenty_one_get_icon_svg( 'ui', 'arrow_left' );
+</main>
 
-	$twentytwentyone_next_label     = esc_html__( 'Next post', 'twentytwentyone' );
-	$twentytwentyone_previous_label = esc_html__( 'Previous post', 'twentytwentyone' );
+<?php get_footer(); ?>
 
-	the_post_navigation(
-		array(
-			'next_text' => '<p class="meta-nav">' . $twentytwentyone_next_label . $twentytwentyone_next . '</p><p class="post-title">%title</p>',
-			'prev_text' => '<p class="meta-nav">' . $twentytwentyone_prev . $twentytwentyone_previous_label . '</p><p class="post-title">%title</p>',
-		)
-	);
-endwhile; // End of the loop.
-
-get_footer();
