@@ -63,7 +63,7 @@
 
 				</div>
 			</div>
-		<?php endwhile; ?>
+		<?php endwhile; ?> 
 	<?php endif; ?>
 	<div class="partie_3">
   		<p>VOUS AIMEREZ AUSSI</p>
