@@ -40,38 +40,17 @@ jQuery(document).ready(function($) {
     });
 
 
-
-
-    jQuery(document).ready(function($) {
-	const arrowLeft = $(".arrow_left");
-	const arrowRight = $(".arrow_right");
-	const currentPhoto = $("#currentPhoto");
+    //menu burger
+    document.addEventListener('DOMContentLoaded', function () {
+	var burgerMenu = document.getElementById('burger-menu');
+	var responsiveMenu = document.getElementById('responsive-menu');
     
-	arrowLeft.on("mouseenter", function() {
-	    const prevLink = "<?php echo esc_url($prevLink); ?>";
-	    if (prevLink) {
-		currentPhoto.attr("src", "<?php echo esc_url(get_the_post_thumbnail_url($prevPost)); ?>");
-	    }
-	});
-    
-	arrowRight.on("mouseenter", function() {
-	    const nextLink = "<?php echo esc_url($nextLink); ?>";
-	    if (nextLink) {
-		currentPhoto.attr("src", "<?php echo esc_url(get_the_post_thumbnail_url($nextPost)); ?>");
-	    }
+	burgerMenu.addEventListener('click', function () {
+	    burgerMenu.classList.toggle('open');
+	    responsiveMenu.classList.toggle('show-menu');
 	});
     });
-     
     
     
-
-
-
     
-    
-     
- 
-    
-
-    
-    
+      

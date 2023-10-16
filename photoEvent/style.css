@@ -2,8 +2,7 @@
 Theme Name: Photo Event
 Author: Ben Mrad Intidhar
 */
-/* @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Space+Mono&display=swap'); */
+
 
 
 
@@ -90,5 +89,88 @@ footer {
 	list-style: none;
 }
 
-
+/*menu burger*/
+#responsive-menu {
+	display: none;
+    }
+#burger-menu {
+	display: none;
+	cursor: pointer;
+    }
+    
+    #burger-icon {
+	
+	width: 30px;
+	height: 30px;
+	position: relative;
+    }
+    
+    .bar {
+	width: 33px;
+	height: 3px;
+	background-color: #333;
+	margin: 6px 0;
+    }
+    
+   
+    #burger-menu.open .bar:nth-child(1) {
+	transform: translateY(9px) rotate(44deg);
+    }
+    
+    #burger-menu.open .bar:nth-child(2) {
+	opacity: 0;
+    }
+    
+    #burger-menu.open .bar:nth-child(3) {
+	transform: translateY(-8px) rotate(-45deg);
+    }
+   
+    
+   
+    
+    @media screen and (max-width: 768px) {
+	.menu .mon-bouton{display: none;}
+	#burger-menu {
+	    display: block;
+	}
+	#burger-icon {
+	top: -1vh;
+		width: 40px;
+		height: 30px;
+		position: relative;
+	    }
+	.header-menu {
+	    display: none;
+	}
+    
+	#responsive-menu a{
+		
+		font-family: "SpaceMono";
+		color: #fff ;
+		font-size: 44px;
+		font-weight: 400;
+		line-height: 65px;
+		letter-spacing: 0em;
+		text-align: center;
+		display: block;
+	}
+	#responsive-menu ul{
+		list-style: none;}
+	#responsive-menu {
+	z-index: 1;
+	height: 100%;
+	list-style: none;
+	    position: absolute;
+	    top: 60px; 
+	    left: 0;
+	    width: 100%;
+	    background-color:red;
+	    
+	   
+	
+	}
+	.show-menu {
+		display: block !important; 
+	    }
+    }
     

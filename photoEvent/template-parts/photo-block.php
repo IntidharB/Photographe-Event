@@ -25,8 +25,8 @@
                             <img class="eye" src="<?php echo get_template_directory_uri(); ?>/assets/images/Icon_eye.png" alt="eye">
                         </a>
                         <div class="texte">
-                            <div><?php the_title(); ?></div>
-                            <div class="right_now"><?php echo strip_tags(get_the_term_list($post->ID, 'categorie')); ?></div>
+                        <div class="ref-box"><?php echo get_field('reference', $post->ID); ?></div>
+                        <div class="cat-box"><?php echo strip_tags(get_the_term_list($post->ID, 'categorie')); ?></div>
                         </div>
                     </div>
                 </div>

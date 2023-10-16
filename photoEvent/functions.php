@@ -8,8 +8,11 @@ function enqueue_photoEvent_styles()
 	wp_enqueue_style('photoEvent-modale-style', get_template_directory_uri() . '/assets/css/modale.css');
 	wp_enqueue_style('photoEvent-single-style', get_template_directory_uri() . '/assets/css/single.css');
 	wp_enqueue_style('photoEvent-accueil-style', get_template_directory_uri() . '/assets/css/accueil.css');
+	wp_enqueue_style('photoEvent-lightbox-style', get_template_directory_uri() . '/assets/css/lightbox.css');
+
 
 }
+
 add_action('wp_enqueue_scripts', 'enqueue_photoEvent_styles');
 
 /**  Enqueue des JS **/
@@ -22,7 +25,9 @@ function enqueue_photoEvent_scripts()
 
 	wp_enqueue_script('photoEvent-scripts', get_template_directory_uri() . '/assets/js/scripts.js', array(), '1.0', true);
 	wp_enqueue_script('photoEvent-ajax', get_template_directory_uri() . '/assets/js/ajax.js', array(), '1.0', true);
-	wp_enqueue_script('script2', get_stylesheet_directory_uri() . '/assets/js/scripts.js', array('jquery'), '', true);
+	// wp_enqueue_script('script2', get_stylesheet_directory_uri() . '/assets/js/scripts.js', array('jquery'), '', true);
+	wp_enqueue_script('photoEvent-lightbox', get_template_directory_uri() . '/assets/js/lightbox.js', array(), '1.0', true);
+
 }
 add_action('wp_enqueue_scripts', 'enqueue_photoEvent_scripts');
 
@@ -92,9 +97,11 @@ function filtre()
 				: '',
 		)
 	]);
+	
 	if ($filtre->have_posts()) :
 		while ($filtre->have_posts()) :
-			$filtre->the_post(); ?>
+			$filtre->the_post();
+			?>
 			<div class="overlay-image">
 				<?php the_content(); ?>
 				<div class=hover>
@@ -103,7 +110,8 @@ function filtre()
 						<img class="eye" src="<?php echo get_template_directory_uri(); ?>/assets/images/Icon_eye.png" alt="eye">
 					</a>
 					<div class="texte">
-						<div> <?php the_title(); ?></div>
+					<div class="ref-box"><?php echo get_field('reference', $post->ID); ?></div>
+                        <div class="cat-box"><?php echo strip_tags(get_the_term_list($post->ID, 'categorie')); ?></div>
 					</div>
 				</div>
 			</div>

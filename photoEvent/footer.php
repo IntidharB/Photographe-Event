@@ -11,9 +11,14 @@
 </nav>
 
 <?php get_template_part('template-parts/modal-contact'); ?>
+<?php get_template_part('template-parts/lightbox'); ?>
+
+
+
 
 
 </footer>
 </body> 
 
 </html>
+
