@@ -17,11 +17,12 @@
             while ($query->have_posts()) :
                 $query->the_post();
         ?>
-                <div class="overlay-image">
+                <div class="overlay-imageSingle">
                     <?php the_content(); ?>
-                    <div class="hover">
-                        <img class="full_screen" data-image="<?php echo get_the_post_thumbnail_url(); ?>" src="<?php echo get_template_directory_uri(); ?>/assets/images/Icon_fullscreen.png" alt="full_screen">
-                        <a href="<?php the_permalink(); ?>">
+                    <div class="hoverSingle">
+                    <a href="#">
+                        <img class="full_screen" data-category="<?php echo strip_tags(get_the_term_list(get_the_ID(), 'categorie')); ?>" data-reference="<?php echo get_field('reference', get_the_ID()); ?>" data-image="<?php echo get_the_post_thumbnail_url(); ?>" src="<?php echo get_template_directory_uri(); ?>/assets/images/Icon_fullscreen.png" alt="full_screen">
+                    </a>                        <a href="<?php the_permalink(); ?>">
                             <img class="eye" src="<?php echo get_template_directory_uri(); ?>/assets/images/Icon_eye.png" alt="eye">
                         </a>
                         <div class="texte">

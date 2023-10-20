@@ -1,9 +1,4 @@
-<!-- lightbox.php 
-<div class="lightbox-container">
-    <img class="lightbox-prev"src="<?php echo get_template_directory_uri(); ?>./assets/images/Line6.png" alt="fleche_gauche">
-    <img class="lightbox-next" src="<?php echo get_template_directory_uri(); ?>./assets/images/Line7.png" alt="fleche_droite">
-    <span class="lightbox-close" onclick="closeLightbox()">&times;</span>
-</div>-->
+
 <!-- lightbox.php -->
 <div id="custom-lightbox">
     <span class="close-lightbox">&times;</span>

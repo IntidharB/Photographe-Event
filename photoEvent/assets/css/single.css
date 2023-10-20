@@ -22,10 +22,12 @@ main{
   
     
     .info-photo h1{
+	font-family: 'SpaceMono','sans-serif';
 	font-size: 4em;
-	width:10vw;
+	width:26vw;
 	font-weight: 400;
 	font-style: italic;
+	line-height: 58px;
     }
     
     .photo-content{
@@ -34,9 +36,9 @@ main{
     .photo-content img{
 	object-fit: contain !important;
 	min-width: 50vw !important;
-	height: auto!important;
+	/* height: auto!important; */
 	object-position: right;
-	min-height: 70vh;
+	/* min-height: 70vh; */
     }
 
 
@@ -76,12 +78,13 @@ main{
 /**la 3eme partie **/
     .wp-block-image img{
 	width:42vw;
-	height:70vh;
-	object-fit: cover;
-	margin: 0 0 0 1.43vw
+	height:70vh !important;
+	object-fit: cover !important;
+	margin: 0 0 0 1.43vw;
+	/* background-color: red; */
 	
     }
-    
+   
     #photosapp{
 	display: flex;
 	
@@ -117,30 +120,122 @@ main{
   
 
 
-.site__navigation {display: flex;}
+.site-navigation {display: flex;}
 
-    .site__navigation__prev,
-.site__navigation__next {
+.site-navigation-prev,
+.site-navigation-next {
     text-align: center;
     padding: 0 10px;
 }
 
-.site__navigation__prev .wp-post-image,
-.site__navigation__next .wp-post-image {
+.site-navigation-prev .wp-post-image,
+.site-navigation-next .wp-post-image {
     width: 77px;
     opacity: 0;
-    transition: all 0.5s ease-in-out;
+    /* transition: all 0.5s ease-in-out; */
 }
 
-.site__navigation__prev:hover .wp-post-image,
-.site__navigation__next:hover .wp-post-image {
+.site-navigation-prev:hover .wp-post-image,
+.site-navigation-next:hover .wp-post-image {
     opacity: 1;
 }
 
-.photo__contact {
+/* .photo__contact {
     padding: 20px 0 10px;
     justify-content: space-between;
     align-items: center;
     border-bottom: 1px solid #000;
+} */
+
+.flecheGauche{
+	margin-right: -7vw;
 }
 
+.overlay-imageSingle {
+	position: relative;
+	width: auto;
+	margin-bottom: 5vh;
+}
+
+.overlay-imageSingle .hoverSingle {
+	position: absolute;
+	top: 0;
+	height: 70vh;
+	width: 42vw;
+	opacity: 0;
+	/* transition: .5s ease; */
+}
+
+.overlay-imageSingle:hover .hoverSingle {
+	opacity: 1;
+	background: linear-gradient(180deg, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.5) 100%);
+	margin-left: 1.5vw;
+ 
+}
+.overlay-imageSingle .texte {
+	position: absolute;
+	bottom: 1vh;
+	left: 1vw;
+	font-family: 'Poppins', 'sans serif';
+	color: #ffffff;
+}
+
+/*******responsive**********/
+@media screen and (max-width: 769px) {
+.photo {
+	display: flex;
+	flex-direction: column-reverse;}
+	.photo-content {
+		width: auto;
+	    }
+	    .wp-block-image img{
+		width: 90vw;
+	    }
+	.info-photo {
+		width: 100%;
+	}
+	.site-navigation{
+		display: none;
+	}
+#photosapp{
+	display: block;
+}
+.info-photo {
+	display: flex;
+	align-items: normal;
+	margin: 0vw -2vw 0vw 0vw;
+	flex-wrap: wrap;
+    flex-direction: column;
+    padding-bottom: 8vw;
+    border-bottom: black solid 1px;
+}
+.partie_2  {
+	display: block;
+	padding-bottom: 0vh;
+	height: 13vh;
+	border-bottom: solid black 1px;
+}
+.partie_2 p {
+	display: grid;
+	margin: 10vw 0vw 0vw 15vw;
+	
+	
+}
+.partie_2 input {
+	width: 60vw;
+	height: 6vh;
+	margin:1vw 0vw;
+    }
+.partie_3 p{
+margin-left: 19vw;
+font-size: 18px;
+}
+
+.overlay-imageSingle .hoverSingle {
+	
+	width: 90vw
+	
+	/* transition: .5s ease; */
+}
+
+}

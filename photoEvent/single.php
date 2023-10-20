@@ -35,9 +35,9 @@
 
 				</p>
 
-				<div class="site__navigation ">
+				<div class="site-navigation ">
 
-					<div class="site__navigation__prev">
+					<div class="site-navigation-prev">
 						<?php
 						$prev_post = get_previous_post();
 						if ($prev_post) {
@@ -49,12 +49,12 @@
 							<div><?php echo get_the_post_thumbnail($prev_post_id); ?></div>
 						<?php
 
-							echo '<img src="' . get_stylesheet_directory_uri() . '/assets/images/Line6.png" alt="fleche_gauche" ></a>';
+							echo '<img class="flecheGauche" src="' . get_stylesheet_directory_uri() . '/assets/images/Line6.png" alt="fleche_gauche" ></a>';
 						}
 						?>
 					</div>
-					<div class="img-card"><?php the_post_thumbnail(); ?></div>
-					<div class="site__navigation__next">
+					<div class="img-card dynamic-image"><?php the_post_thumbnail(); ?></div>
+					<div class="site-navigation-next">
 
 						<?php
 						$next_post = get_next_post();
@@ -67,7 +67,7 @@
 							<div><?php echo get_the_post_thumbnail($next_post_id); ?></div>
 						<?php
 
-							echo '<img src="' . get_stylesheet_directory_uri() . '/assets/images/Line7.png" alt="fleche_droit" ></a>';
+							echo '<img  src="' . get_stylesheet_directory_uri() . '/assets/images/Line7.png" alt="fleche_droit" ></a>';
 						}
 						?>
 

@@ -20,7 +20,7 @@ function loadMorePosts() {
     success: function (res) {
       // Ajoute le contenu au bas de la liste existante
       $('.photos-acc').append(res);
-      //lightbox();
+      lightbox();
       
       // Après avoir ajouté de nouvelles publications, réappliquer les filtres
       applyFilters();

@@ -20,7 +20,7 @@ jQuery(document).ready(function($) {
 	
     });
    
-
+//modale single page 
     jQuery(document).ready(function($) {
 	// Ouvrir la modale lorsque le bouton sur la page individuelle est cliqué
 	$('#modaleContactSingle').on('click', function(e) {
@@ -52,5 +52,23 @@ jQuery(document).ready(function($) {
     });
     
     
-    
+    $(document).ready(function() {
+	$('.flecheGauche, .flecheDroite').hover(
+	  function() {
+	    var dynamicImage = $(this).siblings('.dynamic-image').find('img');
+	    var newImageSrc = $(this).siblings('.dynamic-image').find('div').html();
+	    dynamicImage.fadeOut(300, function() {
+	      dynamicImage.attr('src', newImageSrc).fadeIn(300);
+	    });
+      
+	    // Ajouter une classe CSS lors du survol
+	    $(this).addClass('hovered');
+	  },
+	  function() {
+	    // Retirer la classe CSS lorsque le survol est terminé
+	    $(this).removeClass('hovered');
+	  }
+	);
+      });
+      
       

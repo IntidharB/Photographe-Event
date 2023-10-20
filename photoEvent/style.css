@@ -15,7 +15,7 @@ Author: Ben Mrad Intidhar
 	url('assets/fonts/poppins-light-webfont.ttf') format('truetype'),
 	url('assets/fonts/poppins-light-webfont.svg#svgwpf') format('svg');
 	}
-	@font-face {
+@font-face {
 		font-family: 'SpaceMono';
 		src: url('assets/fonts/spacemono-regular-webfont.eot');
 		src: url('assets/fonts/spacemono-regular-webfont.eot?#iefix') format('embedded-opentype'),
@@ -85,11 +85,10 @@ footer {
 
 .footer-menu {
 	display: flex;
-	
 	list-style: none;
 }
 
-/*menu burger*/
+/*********menu burger*******/
 #responsive-menu {
 	display: none;
     }
@@ -127,8 +126,9 @@ footer {
    
     
    
-    
-    @media screen and (max-width: 768px) {
+  /*********Responsive*****************/  
+    @media screen and (max-width: 769px) {
+	/**header**/
 	.menu .mon-bouton{display: none;}
 	#burger-menu {
 	    display: block;
@@ -144,7 +144,7 @@ footer {
 	}
     
 	#responsive-menu a{
-		
+		margin-bottom: 5vw;
 		font-family: "SpaceMono";
 		color: #fff ;
 		font-size: 44px;
@@ -155,7 +155,9 @@ footer {
 		display: block;
 	}
 	#responsive-menu ul{
-		list-style: none;}
+		margin-top: 50vw;
+		list-style: none;
+	}
 	#responsive-menu {
 	z-index: 1;
 	height: 100%;
@@ -172,5 +174,26 @@ footer {
 	.show-menu {
 		display: block !important; 
 	    }
+	    .mon-bouton{
+		margin-left: 10vw;
+	    }
+
+	    /******footer*****/
+	    footer {
+		flex-direction: column;
+		align-items: center;
+	      }
+	      .footer-menu {
+		display: block;
+		list-style: none;
+		text-align: center;
+	}
+	.menu{
+		display: block;
+
+	}
+	.menu p{
+		margin: -2vw 0vw 1vw 6vw;
+	}
     }
     
