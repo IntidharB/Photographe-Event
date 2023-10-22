@@ -1,23 +1,25 @@
 console.log("Le script est bien chargé !");
 jQuery(document).ready(function($) {
+	 // Ouvrir la modale lorsque le bouton est cliqué
 	// Ouvrir la modale lorsque le bouton est cliqué
 	$('.mon-bouton').on('click', function(e) {
-	    e.preventDefault();
-	    $('#modal-contact').fadeIn();
-	});
-    
-	// Fermer la modale lorsque l'icône de fermeture est cliquée
-	$('.close-modal').on('click', function() {
-	    $('#modal-contact').fadeOut();
-	});
-
+		e.preventDefault();
+		// Fermer le menu burger s'il est ouvert
+		if ($('#burger-menu').hasClass('open')) {
+		    $('#burger-menu').removeClass('open');
+		    $('#responsive-menu').removeClass('show-menu');
+		}
+		// Afficher la modale
+		$('#modal-contact').fadeIn();
+	    });
 	 // Fermer la modale lorsque l'utilisateur clique en dehors de celle-ci
 	 $(document).on('click', function(e) {
 		if ($(e.target).is('#modal-contact')) {
 		    $('#modal-contact').fadeOut();
 		}
 	    });
-	
+	    
+   
     });
    
 //modale single page 
