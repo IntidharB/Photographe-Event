@@ -4,8 +4,6 @@ let currentPage = 1;
 function loadMorePosts() {
   // Incrémente la page actuelle à chaque clic sur "Load More"
   currentPage++;
-  
-  // Effectue une requête AJAX pour obtenir les publications suivantes
   $.ajax({
     type: 'POST',
     url: 'wp-admin/admin-ajax.php',
@@ -13,27 +11,30 @@ function loadMorePosts() {
     data: {
       action: 'filtre',
       paged: currentPage,
-      category:$('#categFiltre').val(),
+      category: $('#categFiltre').val(),
       post_format: $('#formFiltre').val(),
       post_ordre: $('#triFiltre').val(),
     },
     success: function (res) {
-      // Ajoute le contenu au bas de la liste existante
+      // Filtrer le nouveau contenu pour extraire les images
+      const newImages = $(res).filter('.full_screen');
+      // Ajouter le nouveau contenu à la liste existante de photos
       $('.photos-acc').append(res);
-      lightbox();
-      
-      // Après avoir ajouté de nouvelles publications, réappliquer les filtres
+      // Réinitialiser la liste d'images avec les nouvelles images ajoutées
+      images = $('.photos-acc .full_screen');
+      // Réappliquer les événements de lightbox pour les nouvelles images
+      openLightbox();
+      // Appliquer les filtres après l'ajout du nouveau contenu
       applyFilters();
     }
   });
 }
-
-// Gère le clic sur le bouton "Load More"
+// Gérer le clic sur le bouton "Load More"
 $('#load-more').on('click', loadMorePosts);
 
 // Fonction pour charger le contenu en utilisant AJAX avec des filtres
 function loadContent(page, category, postFormat, postOrder) {
-  // Effectue une requête AJAX pour obtenir le contenu filtré
+  // Effectuer une requête AJAX pour obtenir le contenu filtré
   $.ajax({
     type: 'POST',
     url: 'wp-admin/admin-ajax.php',
@@ -46,18 +47,22 @@ function loadContent(page, category, postFormat, postOrder) {
       post_ordre: postOrder,
     },
     success: function (res) {
-      // Mettre à jour le contenu de .photos-acc avec la réponse AJAX
+      // Filtrer le nouveau contenu pour extraire les images
+      const newImages = $(res).filter('.full_screen');
+      // Remplacer le contenu de .photos-acc par la réponse AJAX
       $('.photos-acc').html(res);
-      //lightbox();
+      // Réinitialiser la liste d'images avec les nouvelles images ajoutées
+      images = $('.photos-acc .full_screen');
     }
   });
 }
+
 // Fonction pour appliquer les filtres
 function applyFilters() {
-  // Réinitialise la page actuelle lorsque les filtres changent
+  // Réinitialiser la page actuelle lorsque les filtres changent
   currentPage = 1;
-  // Charge le contenu avec les filtres actuels
+  // Charger le contenu avec les filtres actuels
   loadContent(currentPage, $('#categFiltre').val(), $('#formFiltre').val(), $('#triFiltre').val());
 }
-// Gère les changements dans les sélecteurs de filtre
+// Gérer les changements dans les sélecteurs de filtre
 $('#categFiltre, #formFiltre, #triFiltre').on('change', applyFilters);

@@ -9,28 +9,27 @@ function enqueue_photoEvent_styles()
 	wp_enqueue_style('photoEvent-single-style', get_template_directory_uri() . '/assets/css/single.css');
 	wp_enqueue_style('photoEvent-accueil-style', get_template_directory_uri() . '/assets/css/accueil.css');
 	wp_enqueue_style('photoEvent-lightbox-style', get_template_directory_uri() . '/assets/css/lightbox.css');
-
-
 }
 
 add_action('wp_enqueue_scripts', 'enqueue_photoEvent_styles');
 
 /**  Enqueue des JS **/
-function enqueue_photoEvent_scripts() {
+function enqueue_photoEvent_scripts()
+{
 	$reference_acf = get_field('nom_du_champ_acf_pour_la_reference');
-    
-	wp_localize_script('photoEvent-scripts', 'acfData', array(
-	    'reference' => $reference_acf,
-	));
-    
-	wp_enqueue_script('jquery');
-	wp_enqueue_script('photoEvent-lightbox', get_template_directory_uri() . '/assets/js/lightbox.js', array('jquery'), '1.0', true);
-	wp_enqueue_script('photoEvent-ajax', get_template_directory_uri() . '/assets/js/ajax.js', array('jquery'), '1.0', true);
-    }
-    
-    add_action('wp_enqueue_scripts', 'enqueue_photoEvent_scripts');
+	// Passez la valeur du champ ACF à JavaScript en utilisant wp_localize_script
 
-// add_action('wp_enqueue_scripts', 'enqueue_photoEvent_scripts');
+	wp_localize_script('photoEvent-scripts', 'acfData', array(
+		'reference' => $reference_acf,
+	));
+	wp_enqueue_script('jquery', 'https://code.jquery.com/jquery-3.6.0.min.js', array(), '3.6.0', true);
+
+	wp_enqueue_script('photoEvent-scripts', get_template_directory_uri() . '/assets/js/scripts.js', array(), '1.0', true);
+	wp_enqueue_script('photoEvent-ajax', get_template_directory_uri() . '/assets/js/ajax.js', array(), '1.0', true);
+	// wp_enqueue_script('script2', get_stylesheet_directory_uri() . '/assets/js/scripts.js', array('jquery'), '', true);
+	wp_enqueue_script('photoEvent-lightbox', get_template_directory_uri() . '/assets/js/lightbox.js', array(), '1.0', true);
+}
+add_action('wp_enqueue_scripts', 'enqueue_photoEvent_scripts');
 
 
 /** Enregistrement des menus de navigation **/
@@ -71,7 +70,7 @@ function mon_bouton_dans_header()
 }
 add_action('my_custom_header_hook', 'mon_bouton_dans_header');
 
-/**  Fonction de filtrage des éléments **/ 
+/**  Fonction de filtrage des éléments **/
 function filtre()
 {
 	// Effectue une requête personnalisée pour filtrer les éléments en fonction des paramètres POST et affiche les résultats
@@ -98,21 +97,22 @@ function filtre()
 				: '',
 		)
 	]);
-	
+
 	if ($filtre->have_posts()) :
 		while ($filtre->have_posts()) :
 			$filtre->the_post();
-			?>
+?>
 			<div class="overlay-image">
 				<?php the_content(); ?>
 				<div class=hover>
-					<img class="full_screen" data-image="<?php echo get_the_post_thumbnail_url(); ?>" src="<?php echo get_template_directory_uri(); ?>/assets/images/Icon_fullscreen.png" alt="full_screen">
-					<a href="<?php echo get_the_permalink(get_the_ID()); ?>">
+					<a href="#">
+						<img class="full_screen" data-category="<?php echo strip_tags(get_the_term_list(get_the_ID(), 'categorie')); ?>" data-reference="<?php echo get_field('reference', get_the_ID()); ?>" data-image="<?php echo get_the_post_thumbnail_url(); ?>" src="<?php echo get_template_directory_uri(); ?>/assets/images/Icon_fullscreen.png" alt="full_screen">
+					</a> <a href="<?php echo get_the_permalink(get_the_ID()); ?>">
 						<img class="eye" src="<?php echo get_template_directory_uri(); ?>/assets/images/Icon_eye.png" alt="eye">
 					</a>
 					<div class="texte">
-					<div class="ref-box"><?php echo get_field('reference', $post->ID); ?></div>
-                        <div class="cat-box"><?php echo strip_tags(get_the_term_list($post->ID, 'categorie')); ?></div>
+						<div class="ref-box"><?php echo get_field('reference', $post->ID); ?></div>
+						<div class="cat-box"><?php echo strip_tags(get_the_term_list($post->ID, 'categorie')); ?></div>
 					</div>
 				</div>
 			</div>

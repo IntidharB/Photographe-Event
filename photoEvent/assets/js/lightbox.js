@@ -69,4 +69,4 @@ $(document).ready(function () {
     $('.next').on('click', function () {
         changeImage(1);
     });
-});/*lightbox*/
+});
